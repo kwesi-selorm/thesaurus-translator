@@ -1,0 +1,42 @@
+* {
+  font-family: Karla;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+.navbar {
+  background-color: #364f6b;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  padding-left: 0.8rem;
+}
+
+.main-grid {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.main-section-item-title {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.box {
+  border: 7px solid #364f6b;
+  margin-top: 20px;
+  padding: 0.8rem;
+  margin: 3rem auto 3rem;
+  width: fit-content;
+}
+
+.footer {
+  align-items: center;
+  background-color: #364f6b;
+  color: #fff;
+  font-weight: lighter;
+  padding: 10px;
+}
