@@ -4,7 +4,7 @@ import {
   MenuItem,
   FormControl,
   Select,
-  TextField,
+  TextareaAutosize,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -87,15 +87,23 @@ function Translate() {
         </Select>
       </FormControl>
 
-      <div className="user-text">
-        <TextField
-          onKeyDown={handleKeyDown}
-          className="user-text"
-          label="Enter word or phrase"
-          color="warning"
-          variant="outlined"
-        />
-      </div>
+      <TextareaAutosize
+        className="user-text"
+        onKeyDown={handleKeyDown}
+        label="Enter word or phrase"
+        color="warning"
+        variant="outlined"
+        minRows={4}
+        placeholder="Enter word/text"
+        style={{
+          backgroundColor: "#b3541e",
+          border: "1px solid #fff",
+          borderRadius: "10px",
+          color: "#fff",
+          justifyContent: "center",
+          width: "60%",
+        }}
+      />
 
       <div className="translated-text">
         <h3>Translated text</h3>

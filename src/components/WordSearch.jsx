@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import { FilledInput, InputAdornment } from "@mui/material";
 import axios from "axios";
-
-import { TextField } from "@mui/material";
 
 function WordSearch() {
   const [searchWord, setSearchWord] = useState("word");
@@ -53,16 +53,22 @@ function WordSearch() {
         <h1>Word Search</h1>
       </div>
       <form>
-        <TextField
+        <FilledInput
           color="warning"
-          variant="outlined"
+          variant="filled"
           autoComplete="off"
           type="text"
           name="search-input"
           placeholder="Search for word"
           size="small"
           onKeyDown={handleKeyDown}
-        ></TextField>
+          style={{ padding: "4px" }}
+          startAdornment={
+            <InputAdornment position="start">
+              <SearchIcon></SearchIcon>
+            </InputAdornment>
+          }
+        />
       </form>
       <div className="box">
         <h2>{searchWord}</h2>
