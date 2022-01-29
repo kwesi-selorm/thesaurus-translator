@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 import axios from "axios";
 
-import { TextField } from "@mui/material";
+function LearnANewWord() {
+  const [randomWord, setRandomWord] = useState("");
 
-function WordSearch() {
-  const [searchWord, setSearchWord] = useState("word");
   const [pronounciation, setPronounciation] = useState("");
   const [definitions, setDefinitions] = useState([]);
   const [examples, setExamples] = useState([]);
 
-  function handleKeyDown(event) {
-    if (event.keyCode === 13) {
-      setSearchWord(event.target.value);
-      event.preventDefault();
-    }
+  //Generate random word
+  function handleClick() {
+    const options = {
+      method: "GET",
+      url: "https://random-words-api.vercel.app/word",
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        setRandomWord(response.data[0].word);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   }
 
+  useEffect(handleClick, []);
+
+  //Generate the details
   useEffect(
     function () {
       const options = {
         method: "GET",
-        url: "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchWord,
+        url: "https://api.dictionaryapi.dev/api/v2/entries/en/" + randomWord,
       };
       axios
         .request(options)
@@ -29,6 +42,7 @@ function WordSearch() {
           let egs = [];
 
           const wordInfo = response.data[0];
+          console.log(wordInfo);
           const meanings = wordInfo.meanings[0].definitions;
 
           for (let i = 0; i < meanings.length; i++) {
@@ -44,31 +58,36 @@ function WordSearch() {
           console.log(error);
         });
     },
-    [searchWord]
+    [randomWord]
   );
+
+  // if (!randomWord) return null;
 
   return (
     <div className="main-section-item">
-      <div className="main-section-item-title">
-        <h1>Word Search</h1>
-      </div>
+      <h1 className="main-section-item-title">Learn A New Word</h1>
       <form>
-        <TextField
+        <Button
+          type="button"
           color="warning"
+          onClick={handleClick}
           variant="outlined"
-          autoComplete="off"
-          type="text"
-          name="search-input"
-          placeholder="Search for word"
-          size="small"
-          onKeyDown={handleKeyDown}
-        ></TextField>
+          size="large"
+          style={{
+            marginBottom: "1px",
+            textTransform: "lowercase",
+            fontWeight: "bold",
+          }}
+        >
+          Random Word
+        </Button>
       </form>
-      <div className="box">
-        <h2>{searchWord}</h2>
+      <div id="random-word-box" className="box">
+        <h2 className="random-word">{randomWord}</h2>
         <h3>[{pronounciation}]</h3>
       </div>
-      <h3>Definitions</h3>
+
+      <h3 style={{ marginTop: "40px" }}>Definitions</h3>
       <ol>
         {definitions.map((def) => (
           <li>{def}</li>
@@ -84,4 +103,4 @@ function WordSearch() {
   );
 }
 
-export default WordSearch;
+export default LearnANewWord;
