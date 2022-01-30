@@ -92,7 +92,7 @@ function LearnANewWord() {
           <li>{def}</li>
         ))}
       </ol>
-      <h3>Examples</h3>
+      <h3 style={{ marginTop: "40px" }}>Examples</h3>
       <ol>
         {examples.map((eg) => (
           <li>{eg}</li>

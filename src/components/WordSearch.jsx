@@ -75,13 +75,13 @@ function WordSearch() {
         <h2>{searchWord}</h2>
         <h3>[{pronounciation}]</h3>
       </div>
-      <h3>Definitions</h3>
+      <h3 style={{ marginTop: "40px" }}>Definitions</h3>
       <ol>
         {definitions.map((def) => (
           <li>{def}</li>
         ))}
       </ol>
-      <h3>Examples</h3>
+      <h3 style={{ marginTop: "40px" }}>Examples</h3>
       <ol>
         {examples.map((eg) => (
           <li>{eg}</li>
