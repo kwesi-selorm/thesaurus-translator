@@ -101,7 +101,8 @@ function Translate() {
           borderRadius: "10px",
           color: "#fff",
           justifyContent: "center",
-          width: "60%",
+          marginTop: "50px",
+          width: "90%",
         }}
       />
 

@@ -4,7 +4,6 @@ import axios from "axios";
 
 function LearnANewWord() {
   const [randomWord, setRandomWord] = useState("");
-
   const [pronounciation, setPronounciation] = useState("");
   const [definitions, setDefinitions] = useState([]);
   const [examples, setExamples] = useState([]);
@@ -27,6 +26,8 @@ function LearnANewWord() {
   }
 
   useEffect(handleClick, []);
+
+  // if (!randomWord) return null;
 
   //Generate the details
   useEffect(
@@ -61,8 +62,6 @@ function LearnANewWord() {
     [randomWord]
   );
 
-  // if (!randomWord) return null;
-
   return (
     <div className="main-section-item">
       <h1 className="main-section-item-title">Learn A New Word</h1>
@@ -74,7 +73,7 @@ function LearnANewWord() {
           variant="outlined"
           size="large"
           style={{
-            marginBottom: "1px",
+            marginBottom: "15px",
             textTransform: "lowercase",
             fontWeight: "bold",
           }}

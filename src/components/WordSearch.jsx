@@ -54,8 +54,9 @@ function WordSearch() {
       </div>
       <form>
         <FilledInput
+          className="word-search-input"
           color="warning"
-          variant="filled"
+          variant="standard"
           autoComplete="off"
           type="text"
           name="search-input"
@@ -64,7 +65,7 @@ function WordSearch() {
           onKeyDown={handleKeyDown}
           style={{ padding: "4px" }}
           startAdornment={
-            <InputAdornment position="start">
+            <InputAdornment position="start" style={{ flexWrap: "wrap" }}>
               <SearchIcon></SearchIcon>
             </InputAdornment>
           }
