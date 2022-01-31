@@ -87,6 +87,10 @@ li::first-letter {
   cursor: pointer;
 }
 
+ol {
+  text-align: left;
+}
+
 /* Random word section */
 .random-word::first-letter {
   text-transform: lowercase;

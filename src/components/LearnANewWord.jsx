@@ -12,13 +12,17 @@ function LearnANewWord() {
   function handleClick() {
     const options = {
       method: "GET",
-      url: "https://random-words-api.vercel.app/word",
+      url: "https://random-words5.p.rapidapi.com/getRandom",
+      headers: {
+        "x-rapidapi-host": "random-words5.p.rapidapi.com",
+        "x-rapidapi-key": "ecd42ec1c7msh80bb4b4926400a4p154ee7jsn653b14a0cdfb",
+      },
     };
 
     axios
       .request(options)
       .then(function (response) {
-        setRandomWord(response.data[0].word);
+        setRandomWord(response.data);
       })
       .catch(function (error) {
         console.error(error);
@@ -27,14 +31,17 @@ function LearnANewWord() {
 
   useEffect(handleClick, []);
 
-  // if (!randomWord) return null;
-
   //Generate the details
   useEffect(
     function () {
       const options = {
         method: "GET",
-        url: "https://api.dictionaryapi.dev/api/v2/entries/en/" + randomWord,
+        url: "https://wordsapiv1.p.rapidapi.com/words/" + randomWord,
+        headers: {
+          "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+          "x-rapidapi-key":
+            "ecd42ec1c7msh80bb4b4926400a4p154ee7jsn653b14a0cdfb",
+        },
       };
       axios
         .request(options)
@@ -42,16 +49,15 @@ function LearnANewWord() {
           let defs = [];
           let egs = [];
 
-          const wordInfo = response.data[0];
-          console.log(wordInfo);
-          const meanings = wordInfo.meanings[0].definitions;
+          const wordData = response.data;
+          const results = response.data.results;
 
-          for (let i = 0; i < meanings.length; i++) {
-            defs.push(meanings[i].definition);
-            egs.push(meanings[i].example);
+          for (let i = 0; i < results.length; i++) {
+            defs.push(results[i].definition);
+            egs.push(results[i].examples);
           }
 
-          setPronounciation(wordInfo.phonetic);
+          setPronounciation(wordData.pronunciation.all);
           setDefinitions(defs);
           setExamples(egs);
         })

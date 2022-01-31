@@ -25,7 +25,12 @@ function WordSearch() {
     function () {
       const options = {
         method: "GET",
-        url: "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchWord,
+        url: "https://wordsapiv1.p.rapidapi.com/words/" + searchWord,
+        headers: {
+          "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+          "x-rapidapi-key":
+            "ecd42ec1c7msh80bb4b4926400a4p154ee7jsn653b14a0cdfb",
+        },
       };
       axios
         .request(options)
@@ -33,15 +38,15 @@ function WordSearch() {
           let defs = [];
           let egs = [];
 
-          const wordInfo = response.data[0];
-          const meanings = wordInfo.meanings[0].definitions;
+          const wordData = response.data;
+          const results = response.data.results;
 
-          for (let i = 0; i < meanings.length; i++) {
-            defs.push(meanings[i].definition);
-            egs.push(meanings[i].example);
+          for (let i = 0; i < results.length; i++) {
+            defs.push(results[i].definition);
+            egs.push(results[i].examples);
           }
 
-          setPronounciation(wordInfo.phonetic);
+          setPronounciation(wordData.pronunciation.all);
           setDefinitions(defs);
           setExamples(egs);
         })
