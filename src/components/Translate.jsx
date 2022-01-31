@@ -5,6 +5,7 @@ import {
   FormControl,
   Select,
   TextareaAutosize,
+  Button,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -23,6 +24,11 @@ function Translate() {
       setUserText(event.target.value);
       event.preventDefault();
     }
+  }
+
+  function handleClick() {
+    const textToTranslate = document.getElementById("user-text").value;
+    setUserText(textToTranslate);
   }
 
   useEffect(
@@ -88,6 +94,7 @@ function Translate() {
       </FormControl>
 
       <TextareaAutosize
+        id="user-text"
         className="user-text"
         onKeyDown={handleKeyDown}
         label="Enter word or phrase"
@@ -105,6 +112,16 @@ function Translate() {
           width: "90%",
         }}
       />
+
+      <Button
+        variant="outlined"
+        size="small"
+        color="warning"
+        onMouseDown={handleClick}
+        onClick={handleClick}
+      >
+        Translate
+      </Button>
 
       <div className="translated-text">
         <h3>Translated text</h3>

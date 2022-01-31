@@ -16,6 +16,11 @@ function WordSearch() {
     }
   }
 
+  function handleClick() {
+    const userWord = document.getElementById("input").value;
+    setSearchWord(userWord);
+  }
+
   useEffect(
     function () {
       const options = {
@@ -54,6 +59,7 @@ function WordSearch() {
       </div>
       <form>
         <FilledInput
+          id="input"
           className="word-search-input"
           color="warning"
           variant="standard"
@@ -64,9 +70,13 @@ function WordSearch() {
           size="small"
           onKeyDown={handleKeyDown}
           style={{ padding: "4px" }}
-          startAdornment={
-            <InputAdornment position="start" style={{ flexWrap: "wrap" }}>
-              <SearchIcon></SearchIcon>
+          endAdornment={
+            <InputAdornment position="end" style={{ flexWrap: "wrap" }}>
+              <SearchIcon
+                className="search-icon"
+                onClick={handleClick}
+                onMouseDown={handleClick}
+              ></SearchIcon>
             </InputAdornment>
           }
         />
