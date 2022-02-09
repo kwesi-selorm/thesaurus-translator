@@ -80,8 +80,7 @@ function LearnANewWord() {
           size="large"
           style={{
             marginBottom: "15px",
-            textTransform: "lowercase",
-            fontWeight: "bold",
+            fontFamily: "Poppins",
           }}
         >
           Random Word

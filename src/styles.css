@@ -97,6 +97,10 @@ ol {
 }
 
 /* Translate section */
+#languages >.language {
+  font-family: Poppins;
+}
+
 .user-text {
   font-size: 1rem;
   margin-top: 30px;

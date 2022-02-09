@@ -73,7 +73,10 @@ function Translate() {
         <h1>Translate</h1>
       </div>
       <FormControl style={{ width: "60%" }}>
-        <InputLabel id="language-label" style={{ color: "brown" }}>
+        <InputLabel
+          id="language-label"
+          style={{ color: "brown", fontFamily: "Poppins" }}
+        >
           Translate to...
         </InputLabel>
         <Select
@@ -84,12 +87,23 @@ function Translate() {
           onChange={handleChange}
           variant="standard"
           color="warning"
+          style={{ fontFamily: "Poppins" }}
         >
-          <MenuItem value="fr">French</MenuItem>
-          <MenuItem value="de">German</MenuItem>
-          <MenuItem value="no">Norwegian</MenuItem>
-          <MenuItem value="es">Spanish</MenuItem>
-          <MenuItem value="sv">Swedish</MenuItem>
+          <MenuItem className="language" value="fr">
+            French
+          </MenuItem>
+          <MenuItem className="language" value="de">
+            German
+          </MenuItem>
+          <MenuItem className="language" value="no">
+            Norwegian
+          </MenuItem>
+          <MenuItem className="language" value="es">
+            Spanish
+          </MenuItem>
+          <MenuItem className="language" value="sv">
+            Swedish
+          </MenuItem>
         </Select>
       </FormControl>
 
@@ -119,6 +133,7 @@ function Translate() {
         color="warning"
         onMouseDown={handleClick}
         onClick={handleClick}
+        style={{ fontFamily: "Poppins" }}
       >
         Translate
       </Button>

@@ -54,7 +54,7 @@ function WordSearch() {
           console.log(error);
         });
     },
-    [searchWord]
+    [searchWord, examples]
   );
 
   return (
@@ -74,7 +74,7 @@ function WordSearch() {
           placeholder="Search for word"
           size="small"
           onKeyDown={handleKeyDown}
-          style={{ padding: "4px" }}
+          style={{ padding: "4px", fontFamily: "Poppins" }}
           endAdornment={
             <InputAdornment position="end" style={{ flexWrap: "wrap" }}>
               <SearchIcon
@@ -99,7 +99,7 @@ function WordSearch() {
       <h3 style={{ marginTop: "40px" }}>Examples</h3>
       <ol>
         {examples.map((eg) => (
-          <li>{eg}</li>
+          <li>{eg !== [] && eg}</li>
         ))}
       </ol>
     </div>
