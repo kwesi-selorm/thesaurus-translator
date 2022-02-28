@@ -43,7 +43,12 @@ function WordSearch() {
 
           for (let i = 0; i < results.length; i++) {
             defs.push(results[i].definition);
-            egs.push(results[i].examples);
+          }
+
+          for (let definitionObject of results) {
+            if (definitionObject.hasOwnProperty("examples")) {
+              egs.push(...definitionObject.examples);
+            }
           }
 
           setPronounciation(wordData.pronunciation.all);
